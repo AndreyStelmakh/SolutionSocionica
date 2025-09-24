@@ -11,8 +11,16 @@
         <ResourceDictionary Source="/Themes/Generic.xaml"/>
     </Page.Resources>
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Соционика" FontSize="36" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Калькулятор соционика" FontSize="36" HorizontalAlignment="Center" Margin="0,20,0,20" Grid.ColumnSpan="2"/>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1">
             <local:DualControl x:Name="ЭкстраИнтро" FirstFeature="Экстраверсия" SecondFeature="Интроверсия"/>
             <local:DualControl FirstFeature="Интуиция" SecondFeature="Сенсорика"/>
             <local:DualControl FirstFeature="Логика" SecondFeature="Этика" />
@@ -29,5 +37,24 @@
             <local:DualControl FirstFeature="Весёлый" SecondFeature="Серьёзный" />
             <local:DualControl FirstFeature="Аристократизм" SecondFeature="Демократизм" />
         </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <local:CheckBox_Hero Content="Дон Кихот" />
+            <local:CheckBox_Hero Content="Дюма"/>
+            <local:CheckBox_Hero Content="Гюго"/>
+            <local:CheckBox_Hero Content="Робеспьер"/>
+            <local:CheckBox_Hero Content="Гамлет"/>
+            <local:CheckBox_Hero Content="Максим"/>
+            <local:CheckBox_Hero Content="Жуков"/>
+            <local:CheckBox_Hero Content="Есенин"/>
+            <local:CheckBox_Hero Content="Наполеон"/>
+            <local:CheckBox_Hero Content="Бальзак"/>
+            <local:CheckBox_Hero Content="Джек"/>
+            <local:CheckBox_Hero Content="Драйзер"/>
+            <local:CheckBox_Hero Content="Штирлиц"/>
+            <local:CheckBox_Hero Content="Достоевский"/>
+            <local:CheckBox_Hero Content="Гексли"/>
+            <local:CheckBox_Hero Content="Габен"/>
+        </StackPanel>
+
     </Grid>
 </Page>

@@ -3,51 +3,57 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWPSocionica.Controls">
 
-    <ControlTemplate x:Name="CheckBox_Hero" TargetType="CheckBox">
-        <Border x:Name="border_001" BorderThickness="0" Opacity="0.90" CornerRadius="5" Margin="0,1,0,0" HorizontalAlignment="Left" Width="150" VerticalAlignment="Stretch" Padding="8,4,4,4" >
-            <!--Background="{TemplateBinding Background}"-->
-            <Border.Background>
-                <SolidColorBrush x:Name="BackgroundColor" Color="DeepSkyBlue" />
-            </Border.Background>
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualStateGroup.Transitions>
-                        <VisualTransition To="MouseOver" GeneratedDuration="0:0:0.2" />
-                    </VisualStateGroup.Transitions>
-                    <VisualState x:Name="Normal" />
-                    <VisualState x:Name="MouseOver">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Opacity" To="1" />
-                            <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Width" To="160" />
-                        </Storyboard>
-                    </VisualState>
-                </VisualStateGroup>
-                <VisualStateGroup x:Name="CheckStates">
-                    <VisualState x:Name="Checked">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Opacity" To="1.0" />
-                            <ColorAnimation Storyboard.TargetName="BackgroundColor" Storyboard.TargetProperty="Color" From="DarkGray" To="Orange" Duration="0:0:0.3" />
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Unchecked">
-                    </VisualState>
-
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <TextBlock Text="{TemplateBinding Content}" Foreground="Black"/>
-        </Border>
-
-    </ControlTemplate>
-    <Style TargetType="local:CheckBox_Feature">
+    <Style TargetType="local:CheckBox_Hero">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate x:Name="CheckBox_Feature" TargetType="local:CheckBox_Feature">
-                    <Border x:Name="border_001" BorderThickness="0" Opacity="0.90" CornerRadius="5" Margin="0,1,0,0" HorizontalAlignment="Stretch" Height="Auto" Padding="8,4,4,4" >
+                <ControlTemplate TargetType="local:CheckBox_Hero">
+                    <Border x:Name="border_001" BorderThickness="0" Opacity="0.90" CornerRadius="5" Margin="0,1,0,0" HorizontalAlignment="Left" Width="150" VerticalAlignment="Stretch" Padding="8,4,4,4" >
                         <!--Background="{TemplateBinding Background}"-->
                         <Border.Background>
                             <SolidColorBrush x:Name="BackgroundColor" Color="DeepSkyBlue" />
                         </Border.Background>
-                        <TextBlock x:Name="TextBlock_001" Text="{TemplateBinding Content}" FontSize="14">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition To="MouseOver" GeneratedDuration="0:0:0.2" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Opacity" To="1" />
+                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Width" To="160" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                        <ColorAnimation Storyboard.TargetName="BackgroundColor" Storyboard.TargetProperty="Color" From="DarkGray" To="Orange" Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <TextBlock Text="{TemplateBinding Content}" Foreground="Black"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:CheckBox_Feature">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="CheckBox_Feature" TargetType="local:CheckBox_Feature">
+                    <Border x:Name="border_001" BorderThickness="0" CornerRadius="5" Margin="0,1,0,0" HorizontalAlignment="Stretch" Width="180" Padding="8,4,4,4" >
+                        <!--Background="{TemplateBinding Background}"-->
+                        <Border.Background>
+                            <SolidColorBrush x:Name="BackgroundColor" Color="DeepSkyBlue" />
+                        </Border.Background>
+                        <TextBlock x:Name="TextBlock_001" Text="{TemplateBinding Content}">
                             <TextBlock.Foreground>
                                 <SolidColorBrush x:Name="tb_001" Color="Black"/>
                             </TextBlock.Foreground>
@@ -55,21 +61,21 @@
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualStateGroup.Transitions>
-                                    <VisualTransition From="Unchecked" To="Checked" GeneratedDuration="0:0:0.3"/>
-                                    <VisualTransition From="Checked" To="Unchecked" GeneratedDuration="0:0:0.3" />
+                                    <VisualTransition From="Unchecked" To="Checked" GeneratedDuration="0:0:0.2"/>
+                                    <VisualTransition From="Checked" To="Unchecked" GeneratedDuration="0:0:0.5" />
                                 </VisualStateGroup.Transitions>
 
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="TextBlock_001" Storyboard.TargetProperty="FontSize" To="22" />
-                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Opacity" To="1.0"/>
+                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Width" To="215"/>
                                         <ColorAnimation Storyboard.TargetName="BackgroundColor" Storyboard.TargetProperty="Color" To="Orange" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="TextBlock_001" Storyboard.TargetProperty="FontSize" To="14" />
-                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Opacity" To="0.9" />
+                                        <DoubleAnimation Storyboard.TargetName="TextBlock_001" Storyboard.TargetProperty="FontSize" To="16" />
+                                        <DoubleAnimation Storyboard.TargetName="border_001" Storyboard.TargetProperty="Width" To="180"/>
                                         <ColorAnimation Storyboard.TargetName="BackgroundColor" Storyboard.TargetProperty="Color" To="DeepSkyBlue"  />
                                     </Storyboard>
                                 </VisualState>
@@ -85,7 +91,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:DualControl">
-                    <Grid Margin="0,0,0,5">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
