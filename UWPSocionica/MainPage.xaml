@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="UWPSocionica.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPSocionica.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <ResourceDictionary Source="/Themes/Generic.xaml"/>
+    </Page.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Соционика" FontSize="36" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+            <local:DualControl x:Name="ЭкстраИнтро" FirstFeature="Экстраверсия" SecondFeature="Интроверсия"/>
+            <local:DualControl FirstFeature="Интуиция" SecondFeature="Сенсорика"/>
+            <local:DualControl FirstFeature="Логика" SecondFeature="Этика" />
+            <local:DualControl FirstFeature="Статика" SecondFeature="Динамика" />
+            <local:DualControl FirstFeature="Позитивизм" SecondFeature="Негативизм" />
+            <local:DualControl FirstFeature="Квестимность" SecondFeature="Деклатимность" />
+            <local:DualControl FirstFeature="Тактика" SecondFeature="Стратегия" />
+            <local:DualControl FirstFeature="Конструктивизм" SecondFeature="Эмотивизм" />
+            <local:DualControl FirstFeature="Рациональность" SecondFeature="Иррациональность" />
+            <local:DualControl FirstFeature="Процесс" SecondFeature="Результат" />
+            <local:DualControl FirstFeature="Уступчивость" SecondFeature="Упрямость" />
+            <local:DualControl FirstFeature="Беспечность" SecondFeature="Предусмотрительность" />
+            <local:DualControl FirstFeature="Рассудительность" SecondFeature="Решительность" />
+            <local:DualControl FirstFeature="Весёлый" SecondFeature="Серьёзный" />
+            <local:DualControl FirstFeature="Аристократизм" SecondFeature="Демократизм" />
+        </StackPanel>
+    </Grid>
+</Page>

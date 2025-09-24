@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "UWPSocionica": {
+      "commandName": "MsixPackage"
+    }
+  }
+}
