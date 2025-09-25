@@ -10,34 +10,40 @@
     <Page.Resources>
         <ResourceDictionary Source="/Themes/Generic.xaml"/>
     </Page.Resources>
-    <Grid>
+    <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Калькулятор соционика" FontSize="36" HorizontalAlignment="Center" Margin="0,20,0,20" Grid.ColumnSpan="2"/>
-        <StackPanel HorizontalAlignment="Center" Grid.Row="1">
-            <local:DualControl x:Name="ЭкстраИнтро" FirstFeature="Экстраверсия" SecondFeature="Интроверсия"/>
-            <local:DualControl FirstFeature="Интуиция" SecondFeature="Сенсорика"/>
-            <local:DualControl FirstFeature="Логика" SecondFeature="Этика" />
-            <local:DualControl FirstFeature="Статика" SecondFeature="Динамика" />
-            <local:DualControl FirstFeature="Позитивизм" SecondFeature="Негативизм" />
-            <local:DualControl FirstFeature="Квестимность" SecondFeature="Деклатимность" />
-            <local:DualControl FirstFeature="Тактика" SecondFeature="Стратегия" />
-            <local:DualControl FirstFeature="Конструктивизм" SecondFeature="Эмотивизм" />
-            <local:DualControl FirstFeature="Рациональность" SecondFeature="Иррациональность" />
-            <local:DualControl FirstFeature="Процесс" SecondFeature="Результат" />
-            <local:DualControl FirstFeature="Уступчивость" SecondFeature="Упрямость" />
-            <local:DualControl FirstFeature="Беспечность" SecondFeature="Предусмотрительность" />
-            <local:DualControl FirstFeature="Рассудительность" SecondFeature="Решительность" />
-            <local:DualControl FirstFeature="Весёлый" SecondFeature="Серьёзный" />
-            <local:DualControl FirstFeature="Аристократизм" SecondFeature="Демократизм" />
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
+        <TextBlock Text="Калькулятор соционика" FontSize="36" HorizontalAlignment="Center" Margin="0,20,0,20" Grid.ColumnSpan="3"/>
+        <TextBlock Grid.Row="1" Text="Признаки" Padding="8,0,0,0" HorizontalAlignment="Left"/>
+        <ScrollViewer Grid.Row="2">
+            <StackPanel HorizontalAlignment="Left" Padding="0,0,0,20">
+                <local:DualControl x:Name="ЭкстраИнтро" FirstFeature="Экстраверсия" SecondFeature="Интроверсия"/>
+                <local:DualControl FirstFeature="Интуиция" SecondFeature="Сенсорика"/>
+                <local:DualControl FirstFeature="Логика" SecondFeature="Этика" />
+                <local:DualControl FirstFeature="Статика" SecondFeature="Динамика" />
+                <local:DualControl FirstFeature="Позитивизм" SecondFeature="Негативизм" />
+                <local:DualControl FirstFeature="Квестимность" SecondFeature="Деклатимность" />
+                <local:DualControl FirstFeature="Тактика" SecondFeature="Стратегия" />
+                <local:DualControl FirstFeature="Конструктивизм" SecondFeature="Эмотивизм" />
+                <local:DualControl FirstFeature="Рациональность" SecondFeature="Иррациональность" />
+                <local:DualControl FirstFeature="Процесс" SecondFeature="Результат" />
+                <local:DualControl FirstFeature="Уступчивость" SecondFeature="Упрямость" />
+                <local:DualControl FirstFeature="Беспечность" SecondFeature="Предусмотрительность" />
+                <local:DualControl FirstFeature="Рассудительность" SecondFeature="Решительность" />
+                <local:DualControl FirstFeature="Весёлый" SecondFeature="Серьёзный" />
+                <local:DualControl FirstFeature="Аристократизм" SecondFeature="Демократизм" />
+            </StackPanel>
+        </ScrollViewer>
+        <TextBlock Text="Психотипы" Grid.Row="1" Grid.Column="2" Padding="8,0,0,0"/>
+        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2">
             <local:CheckBox_Hero Content="Дон Кихот" />
             <local:CheckBox_Hero Content="Дюма"/>
             <local:CheckBox_Hero Content="Гюго"/>

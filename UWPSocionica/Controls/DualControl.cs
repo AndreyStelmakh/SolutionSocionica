@@ -35,7 +35,7 @@ namespace UWPSocionica.Controls
 
         // Using a DependencyProperty as the backing store for FirstFeature.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FirstFeatureProperty =
-            DependencyProperty.Register(nameof(FirstFeature), typeof(string), typeof(DualControl), new PropertyMetadata("перв", OnFirstFeatureChanged));
+            DependencyProperty.Register(nameof(FirstFeature), typeof(string), typeof(DualControl), new PropertyMetadata(""));
 
 
 
@@ -47,16 +47,7 @@ namespace UWPSocionica.Controls
 
         // Using a DependencyProperty as the backing store for SecondFeature.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SecondFeatureProperty =
-            DependencyProperty.Register(nameof(SecondFeature), typeof(string), typeof(DualControl), new PropertyMetadata("втор", OnSecondFeatureChanged));
-
-        private static void OnFirstFeatureChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-        private static void OnSecondFeatureChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
+            DependencyProperty.Register(nameof(SecondFeature), typeof(string), typeof(DualControl), new PropertyMetadata(""));
 
         protected override void OnApplyTemplate()
         {
