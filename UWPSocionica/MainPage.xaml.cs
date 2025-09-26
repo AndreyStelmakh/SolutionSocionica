@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+using System.Collections.Generic;
+using Windows.UI.Xaml.Controls;
 
 namespace UWPSocionica
 {
@@ -7,6 +9,22 @@ namespace UWPSocionica
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public List<string> SelectedFeatures
+        {
+            //TODO: Implement this property
+            get { throw new NotImplementedException();}
+            //TODO: Implement this property
+            set { throw new NotImplementedException(); }
+
+        }
+        public List<string> SelectedPsycoTypes
+        {
+            //TODO: Implement this property
+            get { throw new NotImplementedException(); }
+            //TODO: Implement this property
+            set { throw new NotImplementedException(); }
+
+        }
         public MainPage()
         {
             InitializeComponent();
