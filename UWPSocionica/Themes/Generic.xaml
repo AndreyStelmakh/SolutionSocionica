@@ -74,24 +74,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                 </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="local:DualControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:DualControl">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <local:CheckBox_Feature x:Name="FirstCheckBox" Content="{TemplateBinding FirstFeature}" />
-                        <local:CheckBox_Feature x:Name="SecondCheckBox" Content="{TemplateBinding SecondFeature}" Grid.Row="1"/>
-                    </Grid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

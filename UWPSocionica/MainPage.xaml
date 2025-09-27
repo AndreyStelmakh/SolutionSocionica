@@ -20,47 +20,63 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Калькулятор соционика" FontSize="36" HorizontalAlignment="Center" Margin="0,20,0,20" Grid.ColumnSpan="3"/>
         <TextBlock Grid.Row="1" Text="Признаки" Padding="8,0,0,0" HorizontalAlignment="Left"/>
         <ScrollViewer Grid.Row="2">
-            <StackPanel HorizontalAlignment="Left" Padding="0,0,0,20">
-                <local:DualControl x:Name="ЭкстраИнтро" FirstFeature="Экстраверсия" SecondFeature="Интроверсия"/>
-                <local:DualControl FirstFeature="Интуиция" SecondFeature="Сенсорика"/>
-                <local:DualControl FirstFeature="Логика" SecondFeature="Этика" />
-                <local:DualControl FirstFeature="Статика" SecondFeature="Динамика" />
-                <local:DualControl FirstFeature="Позитивизм" SecondFeature="Негативизм" />
-                <local:DualControl FirstFeature="Квестимность" SecondFeature="Деклатимность" />
-                <local:DualControl FirstFeature="Тактика" SecondFeature="Стратегия" />
-                <local:DualControl FirstFeature="Конструктивизм" SecondFeature="Эмотивизм" />
-                <local:DualControl FirstFeature="Рациональность" SecondFeature="Иррациональность" />
-                <local:DualControl FirstFeature="Процесс" SecondFeature="Результат" />
-                <local:DualControl FirstFeature="Уступчивость" SecondFeature="Упрямость" />
-                <local:DualControl FirstFeature="Беспечность" SecondFeature="Предусмотрительность" />
-                <local:DualControl FirstFeature="Рассудительность" SecondFeature="Решительность" />
-                <local:DualControl FirstFeature="Весёлый" SecondFeature="Серьёзный" />
-                <local:DualControl FirstFeature="Аристократизм" SecondFeature="Демократизм" />
+            <StackPanel HorizontalAlignment="Left" Padding="0,0,0,20" x:Name="_featuresStackPanel" x:Uid="_featuresStackPanel">
+                <local:CheckBox_Feature Content="Экстраверсия" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Интроверсия" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Интуиция" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Сенсорика" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Логика" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Этика" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Статика" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Динамика" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Позитивизм" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Негативизм" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Квестимность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Деклатимность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Тактика" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Стратегия" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Конструктивизм" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Эмотивизм" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Рациональность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Иррациональность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Процесс" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Результат" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Уступчивость" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Упрямость" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Беспечность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Предусмотрительность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Рассудительность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Решительность" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Весёлый" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Серьёзный" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Аристократизм" Click="CheckBox_Click"/>
+                <local:CheckBox_Feature Content="Демократизм" Click="CheckBox_Click"/>
             </StackPanel>
         </ScrollViewer>
         <TextBlock Text="Психотипы" Grid.Row="1" Grid.Column="2" Padding="8,0,0,0"/>
-        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2">
-            <local:CheckBox_Hero Content="Дон Кихот" />
-            <local:CheckBox_Hero Content="Дюма"/>
-            <local:CheckBox_Hero Content="Гюго"/>
-            <local:CheckBox_Hero Content="Робеспьер"/>
-            <local:CheckBox_Hero Content="Гамлет"/>
-            <local:CheckBox_Hero Content="Максим"/>
-            <local:CheckBox_Hero Content="Жуков"/>
-            <local:CheckBox_Hero Content="Есенин"/>
-            <local:CheckBox_Hero Content="Наполеон"/>
-            <local:CheckBox_Hero Content="Бальзак"/>
-            <local:CheckBox_Hero Content="Джек"/>
-            <local:CheckBox_Hero Content="Драйзер"/>
-            <local:CheckBox_Hero Content="Штирлиц"/>
-            <local:CheckBox_Hero Content="Достоевский"/>
-            <local:CheckBox_Hero Content="Гексли"/>
-            <local:CheckBox_Hero Content="Габен"/>
+        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2" x:Name="_psychoTypesStackPanel">
+            <local:CheckBox_Hero Content="Дон Кихот" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Дюма" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Гюго" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Робеспьер" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Гамлет" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Максим" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Жуков" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Есенин" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Наполеон" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Бальзак" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Джек" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Драйзер" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Штирлиц" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Достоевский" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Гексли" Click="CheckBox_Click"/>
+            <local:CheckBox_Hero Content="Габен" Click="CheckBox_Click"/>
         </StackPanel>
-
+        <HyperlinkButton Content="https://github.com/AndreyStelmakh/SolutionSocionica" NavigateUri="https://github.com/AndreyStelmakh/SolutionSocionica" Margin="0,10,0,0" Grid.Row="4" Grid.ColumnSpan="3"/>
     </Grid>
 </Page>

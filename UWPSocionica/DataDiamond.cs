@@ -1,18 +1,115 @@
-﻿using System;
+﻿using Helpers;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace UWPSocionica
 {
-    internal class DataDiamond
+    internal partial class DataDiamond : Helpers.ExtendedNotify
     {
-        public Dictionary<string, HashSet<string>> _psychoTypes = new Dictionary<string, HashSet<string>>();
+        private static readonly Dictionary<string, HashSet<string>> _allPsychoTypes;
+        private static readonly HashSet<string> _allFeatures;
+        private readonly HashSet<string> _selectedFeatures = [];
+        private readonly HashSet<string> _selectedPsychoTypes = [];
 
-        public DataDiamond()
+        public void Check(string value)
         {
-            _psychoTypes.Add("Дон Кихот",
+            if (_selectedFeatures.Contains(value)) return;
+            if (_selectedPsychoTypes.Contains(value)) return;
+
+            if(_allFeatures.Contains(value))
+            {
+                _selectedFeatures.Remove(OppositeFeature(value));
+                _selectedFeatures.Add(value);
+                _selectedPsychoTypes.Clear();
+                _selectedPsychoTypes.UnionWith(FeaturesToPsychoTypes(_selectedFeatures));
+
+                RaisePropertyChanged(nameof(GetSelectedFeatures));
+                RaisePropertyChanged(nameof(GetSelectedPsychoTypes));
+
+                return;
+            }
+            if(_allPsychoTypes.ContainsKey(value))
+            {
+                _selectedPsychoTypes.Clear();
+                _selectedPsychoTypes.Add(value);
+                _selectedFeatures.Clear();
+                var vals = PsychoTypesToFeatures(_selectedPsychoTypes);
+                _selectedFeatures.UnionWith(vals);
+
+                RaisePropertyChanged(nameof(GetSelectedFeatures));
+                RaisePropertyChanged(nameof(GetSelectedPsychoTypes));
+
+                return;
+            }
+        }
+        public void Uncheck(string value)
+        {
+            if (_selectedFeatures.Contains(value))
+            {
+                _selectedFeatures.Remove(value);
+                _selectedPsychoTypes.Clear();
+                _selectedPsychoTypes.UnionWith(FeaturesToPsychoTypes(_selectedFeatures));
+
+                return;
+            }
+            if (_selectedPsychoTypes.Contains(value))
+            {
+                _selectedPsychoTypes.Remove(value);
+                _selectedFeatures.Clear();
+                _selectedFeatures.UnionWith(PsychoTypesToFeatures(_selectedPsychoTypes));
+
+                return;
+            }
+        }
+        public HashSet<string> GetSelectedFeatures()
+        {
+            return [.. _selectedFeatures.Select(s => s.ToLower())];
+        }
+        public HashSet<string> GetSelectedPsychoTypes()
+        {
+            return [.. _selectedPsychoTypes.Select(s => s.ToLower())];
+        }
+        static DataDiamond()
+        {
+            _allFeatures = [
+                "экстраверсия",
+                "интроверсия",
+                "интуиция",
+                "сенсорика",
+                "логика",
+                "этика",
+                "динамика",
+                "статика",
+                "позитивизм",
+                "негативизм",
+                "квестимность",
+                "деклатимность",
+                "стратегия",
+                "тактика",
+                "конструктивизм",
+                "эмотивизм",
+                "рациональность",
+                "иррациональность",
+                "результат",
+                "процесс",
+                "упрямость",
+                "уступчивость",
+                "предусмотрительность",
+                "беспечность",
+                "рассудительность",
+                "решительность",
+                "веселый",
+                "серьезный",
+                "демократизм",
+                "аристократизм"
+            ];
+
+            _allPsychoTypes = new(StringComparer.OrdinalIgnoreCase);
+            _allPsychoTypes.Add("Дон Кихот",
             [
                 "экстраверсия",
                 "интуиция",
@@ -30,7 +127,7 @@ namespace UWPSocionica
                 "веселый",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Дюма",
+            _allPsychoTypes.Add("Дюма",
             [
                 "интроверсия",
                 "сенсорика",
@@ -48,7 +145,7 @@ namespace UWPSocionica
                 "веселый",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Гюго",
+            _allPsychoTypes.Add("Гюго",
             [
                 "экстраверсия",
                 "сенсорика",
@@ -66,7 +163,7 @@ namespace UWPSocionica
                 "веселый",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Робеспьер",
+            _allPsychoTypes.Add("Робеспьер",
             [
                 "интроверсия",
                 "интуиция",
@@ -84,7 +181,7 @@ namespace UWPSocionica
                 "веселый",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Гамлет",
+            _allPsychoTypes.Add("Гамлет",
             [
                 "экстраверсия",
                 "интуиция",
@@ -102,7 +199,7 @@ namespace UWPSocionica
                 "веселый",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Максим",
+            _allPsychoTypes.Add("Максим",
             [
                 "интроверсия",
                 "сенсорика",
@@ -120,7 +217,7 @@ namespace UWPSocionica
                 "веселый",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Жуков",
+            _allPsychoTypes.Add("Жуков",
             [
                 "экстраверсия",
                 "сенсорика",
@@ -138,7 +235,7 @@ namespace UWPSocionica
                 "веселый",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Есенин",
+            _allPsychoTypes.Add("Есенин",
             [
                 "интроверсия",
                 "интуиция",
@@ -156,7 +253,7 @@ namespace UWPSocionica
                 "веселый",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Наполеон",
+            _allPsychoTypes.Add("Наполеон",
             [
                 "экстраверсия",
                 "сенсорика",
@@ -174,7 +271,7 @@ namespace UWPSocionica
                 "серьезный",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Бальзак",
+            _allPsychoTypes.Add("Бальзак",
             [
                 "интроверсия",
                 "интуиция",
@@ -192,7 +289,7 @@ namespace UWPSocionica
                 "серьезный",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Джек",
+            _allPsychoTypes.Add("Джек",
             [
                 "экстраверсия",
                 "интуиция",
@@ -210,7 +307,7 @@ namespace UWPSocionica
                 "серьезный",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Драйзер",
+            _allPsychoTypes.Add("Драйзер",
             [
                 "интроверсия",
                 "сенсорика",
@@ -228,7 +325,7 @@ namespace UWPSocionica
                 "серьезный",
                 "демократизм",
             ]);
-            _psychoTypes.Add("Штирлиц",
+            _allPsychoTypes.Add("Штирлиц",
             [
                 "экстраверсия",
                 "сенсорика",
@@ -246,7 +343,7 @@ namespace UWPSocionica
                 "серьезный",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Достоевский",
+            _allPsychoTypes.Add("Достоевский",
             [
                 "интроверсия",
                 "интуиция",
@@ -264,7 +361,7 @@ namespace UWPSocionica
                 "серьезный",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Гексли",
+            _allPsychoTypes.Add("Гексли",
             [
                 "экстраверсия",
                 "интуиция",
@@ -282,7 +379,7 @@ namespace UWPSocionica
                 "серьезный",
                 "аристократизм",
             ]);
-            _psychoTypes.Add("Габен",
+            _allPsychoTypes.Add("Габен",
             [
                 "интроверсия",
                 "сенсорика",
@@ -302,19 +399,30 @@ namespace UWPSocionica
             ]);
         }
 
-        HashSet<string> PsychoTypesToFeatures(HashSet<string> psychoTypes)
+        public static HashSet<string> PsychoTypesToFeatures(HashSet<string> psychoTypes)
         {
-            //TODO: Implement this method
-            throw new NotImplementedException();
+            HashSet<string> result = [];
+
+            if (psychoTypes.Count == 0) return result;
+
+            foreach (var pt in psychoTypes)
+            {
+                if (_allPsychoTypes.ContainsKey(pt))
+                {
+                    result.UnionWith(_allPsychoTypes[pt]);
+                }
+            }
+
+            return result;
         }
-        HashSet<string>FeaturesToPsychoTypes(HashSet<string> features)
+        public static HashSet<string>FeaturesToPsychoTypes(HashSet<string> features)
         {
             HashSet<string> result = [];
             if (features.Count == 0)
             {
                 return result;
             }
-            foreach (var pt in _psychoTypes)
+            foreach (var pt in _allPsychoTypes)
             {
                 if (pt.Value.IsSupersetOf(features))
                 {
@@ -322,6 +430,43 @@ namespace UWPSocionica
                 }
             }
             return result;
+        }
+        public static string OppositeFeature(string feature)
+        {
+            return feature switch
+            {
+                "экстраверсия" => "интроверсия",
+                "интроверсия" => "экстраверсия",
+                "интуиция" => "сенсорика",
+                "сенсорика" => "интуиция",
+                "логика" => "этика",
+                "этика" => "логика",
+                "динамика" => "статика",
+                "статика" => "динамика",
+                "позитивизм" => "негативизм",
+                "негативизм" => "позитивизм",
+                "квестимность" => "деклатимность",
+                "деклатимность" => "квестимность",
+                "стратегия" => "тактика",
+                "тактика" => "стратегия",
+                "конструктивизм" => "эмотивизм",
+                "эмотивизм" => "конструктивизм",
+                "рациональность" => "иррациональность",
+                "иррациональность" => "рациональность",
+                "результат" => "процесс",
+                "процесс" => "результат",
+                "упрямость" => "уступчивость",
+                "уступчивость" => "упрямость",
+                "предусмотрительность" => "беспечность",
+                "беспечность" => "предусмотрительность",
+                "рассудительность" => "решительность",
+                "решительность" => "рассудительность",
+                "веселый" => "серьезный",
+                "серьезный" => "веселый",
+                "демократизм" => "аристократизм",
+                "аристократизм" => "демократизм",
+                _ => "",
+            };
         }
     }
 }
