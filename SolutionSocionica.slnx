@@ -1,10 +1,18 @@
 <Solution>
   <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM" />
     <Platform Name="arm64" />
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="UWPPack/UWPPack.wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5" Id="c2afdf08-7ab3-4e7b-b8cb-69cace82efeb">
+    <Platform Solution="*|arm64" Project="ARM64" />
+    <Deploy />
+  </Project>
   <Project Path="UWPSocionica/UWPSocionica.csproj">
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Platform Solution="*|ARM" Project="x64" />
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />

@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="d1e1eeef-225f-49d4-ac62-59fe522dc94f"
-    Publisher="CN=79254"
+    Name="AndreiStelmakh.SocionicCalculator"
+    Publisher="CN=48A1F7AB-4A5A-4ED6-88F7-01EAABE5409A"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="d1e1eeef-225f-49d4-ac62-59fe522dc94f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="8769f712-4259-42a3-b419-eeeb88da6891" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>UWPSocionica</DisplayName>
-    <PublisherDisplayName>79254</PublisherDisplayName>
+    <DisplayName>Socionic Calculator</DisplayName>
+    <PublisherDisplayName>AndreiStelmakh</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="UWPSocionica.App">
       <uap:VisualElements
-        DisplayName="UWPSocionica"
+        DisplayName="Socionic Calculator"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Калькулятор соционика. UWP"
+        Description="Калькулятор соционика."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

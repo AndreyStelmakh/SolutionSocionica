@@ -54,6 +54,8 @@ namespace UWPSocionica
                 _selectedPsychoTypes.Clear();
                 _selectedPsychoTypes.UnionWith(FeaturesToPsychoTypes(_selectedFeatures));
 
+                RaisePropertyChanged(nameof(GetSelectedPsychoTypes));
+
                 return;
             }
             if (_selectedPsychoTypes.Contains(value))
@@ -61,6 +63,8 @@ namespace UWPSocionica
                 _selectedPsychoTypes.Remove(value);
                 _selectedFeatures.Clear();
                 _selectedFeatures.UnionWith(PsychoTypesToFeatures(_selectedPsychoTypes));
+
+                RaisePropertyChanged(nameof(GetSelectedFeatures));
 
                 return;
             }

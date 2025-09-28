@@ -48,40 +48,19 @@ namespace UWPSocionica
 
         private void CheckBox_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            if (sender is CheckBox checkBox && !string.IsNullOrEmpty(checkBox.Content.ToString()))
             {
-                if (sender is CheckBox checkBox && !string.IsNullOrEmpty(checkBox.Content.ToString()))
-                {
-                    string content = checkBox.Content.ToString().ToLower();
+                string content = checkBox.Content.ToString().ToLower();
 
-                    if (checkBox.IsChecked == true)
-                    {
-                        _dataDiamond.Check(content);
-                    }
-                    else
-                    {
-                        _dataDiamond.Uncheck(content);
-                    }
+                if (checkBox.IsChecked == true)
+                {
+                    _dataDiamond.Check(content);
+                }
+                else
+                {
+                    _dataDiamond.Uncheck(content);
                 }
             }
-
-            //{
-            //    if (sender is CheckBox_Feature checkBox)
-            //    {
-            //        if (!string.IsNullOrEmpty(checkBox.Content.ToString()))
-            //        {
-            //            string feature = checkBox.Content.ToString().ToLower();
-
-            //            if (checkBox.IsChecked == true)
-            //            {
-            //                _dataDiamond.Check(feature);
-            //            }
-            //            else
-            //            {
-            //                _dataDiamond.Uncheck(feature);
-            //            }
-            //        }
-            //    }
-            //}
         }
     }
 }
